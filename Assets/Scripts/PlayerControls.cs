@@ -21,6 +21,7 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float timeBeforeStanding = 1.5f;
     [SerializeField] TextMeshProUGUI text1;
     [SerializeField] TextMeshProUGUI text2;
+    public int consecutiveSuccessfulInput = 0;
 
     void Awake()
     {
@@ -57,6 +58,10 @@ public class PlayerControls : MonoBehaviour
 
         // Disable inputs if horse is fallen
         if (HorseController.Instance.HorseState == HorseState.Fallen)
+            return;
+
+        // Disable inputs if game has not started
+        if (!GameManager.Instance.gameStarted)
             return;
 
         // Take input & logic
@@ -201,6 +206,7 @@ public class PlayerControls : MonoBehaviour
             ResetPlayerInputs();
 
             skipThisInput = false;
+            consecutiveSuccessfulInput = 0;
             HorseController.Instance.HorseFall();
         }
         else if (player1Hit && waitForPlayer2 > coyoteTime)
@@ -210,6 +216,7 @@ public class PlayerControls : MonoBehaviour
 
             ResetPlayerInputs();
 
+            consecutiveSuccessfulInput = 0;
             HorseController.Instance.HorseFall();
         }
         else if (player2Hit && waitForPlayer1 > coyoteTime)
@@ -219,6 +226,7 @@ public class PlayerControls : MonoBehaviour
 
             ResetPlayerInputs();
 
+            consecutiveSuccessfulInput = 0;
             HorseController.Instance.HorseFall();
         }
         else if (player1Hit && player2Hit)
@@ -229,11 +237,16 @@ public class PlayerControls : MonoBehaviour
             ResetPlayerInputs();
 
             lastSuccessfulInputTime = Time.time;
+            consecutiveSuccessfulInput++;
+            HorseController.Instance.CurrentVelocity = HorseController.Instance.InitialVelocity + (consecutiveSuccessfulInput * 0.005f);
             HorseController.Instance.HorseState = HorseState.Running;
         }
         else if (Time.time - lastSuccessfulInputTime > timeBeforeStanding)
         {
             HorseController.Instance.HorseState = HorseState.Standing;
+            HorseController.Instance.CurrentVelocity = HorseController.Instance.InitialVelocity;
+
+            consecutiveSuccessfulInput = 0;
         }
     }
 
@@ -244,10 +257,4 @@ public class PlayerControls : MonoBehaviour
         waitForPlayer1 = 0.0f;
         waitForPlayer2 = 0.0f;
     }
-}
-
-public enum Player
-{
-    Player1,
-    Player2
 }

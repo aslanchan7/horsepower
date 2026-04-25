@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -7,7 +8,9 @@ public class HorseController : MonoBehaviour
     public HorseState HorseState;
     [SerializeField] SpriteRenderer sprite;
     [SerializeField] float fallenHorseCountdown;
-    [SerializeField] float velocity;
+    public float InitialVelocity = 0.1f;
+    public float CurrentVelocity;
+    [SerializeField] Animator animator;
     private float startHorseCountdown;
 
     void Awake()
@@ -24,7 +27,7 @@ public class HorseController : MonoBehaviour
 
     void Start()
     {
-
+        CurrentVelocity = InitialVelocity;
     }
 
     void Update()
@@ -33,25 +36,45 @@ public class HorseController : MonoBehaviour
         {
             if (Time.time - startHorseCountdown > fallenHorseCountdown)
             {
-                HorseState = HorseState.Standing;
+                animator.Play("PlayerHorseGetUp");
+                StartCoroutine(WaitForAnimEnd("PlayerHorseGetUp"));
             }
         }
         else if (HorseState == HorseState.Running)
         {
-            sprite.color = Color.green;
-            transform.localPosition += Vector3.right * velocity;
+            animator.Play("PlayerHorseRun");
+            transform.localPosition += Vector3.right * CurrentVelocity;
         }
         else if (HorseState == HorseState.Standing)
         {
-            sprite.color = Color.white;
+            animator.Play("PlayerHorseStand");
         }
     }
 
     public void HorseFall()
     {
-        HorseState = HorseState.Fallen;
-        sprite.color = Color.red;
+        ChangeState(HorseState.Fallen);
+        animator.Play("PlayerHorseFall");
         startHorseCountdown = Time.time;
+        CurrentVelocity = InitialVelocity;
+    }
+
+    IEnumerator WaitForAnimEnd(string stateName)
+    {
+        // Wait until we're actually in the state
+        while (!animator.GetCurrentAnimatorStateInfo(0).IsName(stateName))
+            yield return null;
+
+        // Wait until the animation finishes
+        while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
+            yield return null;
+
+        ChangeState(HorseState.Standing);
+    }
+
+    private void ChangeState(HorseState state)
+    {
+        HorseState = state;
     }
 }
 

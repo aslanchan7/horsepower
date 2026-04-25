@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemyHorseAI : MonoBehaviour
@@ -6,6 +7,8 @@ public class EnemyHorseAI : MonoBehaviour
     [SerializeField] float fallChance = 0.1f;
     [SerializeField] float fallRecoveryTime = 2.0f;
     [SerializeField] float secondsPerQuery = 1.0f;
+    [SerializeField] Animator animator;
+    // [SerializeField] Tuple<HorseAnimations, string> horseAnimationStrings;
     private float lastFallTime;
     private bool fallen;
     private float lastQueryTime;
@@ -15,11 +18,18 @@ public class EnemyHorseAI : MonoBehaviour
 
     void Update()
     {
+        if (!GameManager.Instance.gameStarted)
+        {
+            animator.Play($"{transform.name}Stand");
+            return;
+        }
+
         if (Time.time - lastQueryTime > secondsPerQuery)
         {
-            float random = Random.Range(0.0f, 1.0f);
+            float random = UnityEngine.Random.Range(0.0f, 1.0f);
             if (random <= fallChance)
             {
+                animator.Play($"{transform.name}FallAndGetUp");
                 lastFallTime = Time.time;
                 fallen = true;
             }
@@ -29,6 +39,7 @@ public class EnemyHorseAI : MonoBehaviour
 
         if (!fallen)
         {
+            animator.Play($"{transform.name}Run");
             transform.localPosition += Vector3.right * velocity;
         }
         else
@@ -40,3 +51,11 @@ public class EnemyHorseAI : MonoBehaviour
         }
     }
 }
+
+// public enum HorseAnimations
+// {
+//     Stand,
+//     Run,
+//     Fall,
+//     GetUp
+// }
