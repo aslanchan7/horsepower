@@ -8,11 +8,11 @@ public class Leaderboard : MonoBehaviour
 {
     public static Leaderboard Instance;
     public List<LeaderboardEntry> leaderboardEntries = new();
-    [SerializeField] float maxFieldLength;
-    [SerializeField] float maxPosX;
+    private float fieldLength;
+    [SerializeField] Transform finishLine;
+    private float maxPosX;
     [SerializeField] GameObject horseIndicatorPrefab;
     [SerializeField] RectTransform fieldUI;
-    [SerializeField] GameObject endScreenUI;
 
     void Awake()
     {
@@ -28,6 +28,9 @@ public class Leaderboard : MonoBehaviour
 
     void Start()
     {
+        // Field length is finish line - initial position of horse
+        fieldLength = finishLine.position.x - leaderboardEntries[0].horseTransform.position.x;
+
         maxPosX = fieldUI.sizeDelta.x - horseIndicatorPrefab.GetComponent<RectTransform>().sizeDelta.x;
 
         foreach (var entry in leaderboardEntries)
@@ -44,15 +47,10 @@ public class Leaderboard : MonoBehaviour
         for (int i = 0; i < fieldUI.childCount; i++)
         {
             RectTransform rt = fieldUI.GetChild(i).GetComponent<RectTransform>();
-            float x = (leaderboardEntries[i].horseTransform.localPosition.x / maxFieldLength) * maxPosX;
+            float percentTravelled = Mathf.Clamp01(leaderboardEntries[i].horseTransform.localPosition.x / fieldLength);
+            float x = percentTravelled * maxPosX;
             rt.localPosition = new(x, rt.localPosition.y, rt.localPosition.z);
         }
-    }
-
-    public void ShowEndScreen()
-    {
-        endScreenUI.SetActive(true);
-        // endScreenUI.
     }
 }
 
