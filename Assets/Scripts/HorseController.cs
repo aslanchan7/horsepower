@@ -8,6 +8,7 @@ public class HorseController : MonoBehaviour
     public HorseState HorseState;
     [SerializeField] SpriteRenderer sprite;
     [SerializeField] float fallenHorseCountdown;
+    [SerializeField] private AudioClip horseFallClip;
     public float InitialVelocity = 0.1f;
     public float CurrentVelocity;
     [SerializeField] Animator animator;
@@ -38,6 +39,7 @@ public class HorseController : MonoBehaviour
             {
                 animator.Play("PlayerHorseGetUp");
                 StartCoroutine(WaitForAnimEnd("PlayerHorseGetUp"));
+                AudioManager.instance.HorseGetUp();
             }
         }
         else if (HorseState == HorseState.Running)
@@ -53,10 +55,12 @@ public class HorseController : MonoBehaviour
 
     public void HorseFall()
     {
+        
         ChangeState(HorseState.Fallen);
         animator.Play("PlayerHorseFall");
         startHorseCountdown = Time.time;
         CurrentVelocity = InitialVelocity;
+        AudioManager.instance.HorseFall();
     }
 
     IEnumerator WaitForAnimEnd(string stateName)
