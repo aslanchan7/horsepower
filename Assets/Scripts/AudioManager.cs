@@ -1,9 +1,11 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
+    [SerializeField] private AudioSource RandomBabble;
 
     [SerializeField] private AudioSource SFXObject;
     [SerializeField] private AudioSource LoopObject;
@@ -18,6 +20,8 @@ public class AudioManager : MonoBehaviour
 
     private AudioSource racingMusicInstance;
     private AudioSource runningSfxInstance;
+    private int frameCounter = 0;
+    private int babbleDelay = 1000;
 
 
     private void Awake()
@@ -33,6 +37,18 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        frameCounter = frameCounter + 1;
+
+        if (frameCounter == babbleDelay)
+        {
+            RandomBabble.Play();
+            babbleDelay = Random.Range(2500,5000);
+            frameCounter = 0;
+        }
+    }
+
 
     public void StartRace()
     {
@@ -44,7 +60,7 @@ public class AudioManager : MonoBehaviour
         AudioSource runningInstance = Instantiate(LoopObject, transform.position, Quaternion.identity);
         runningSfxInstance = runningInstance;
         runningSfxInstance.clip = RunningClip;
-        runningSfxInstance.volume = 0.3f;
+        runningSfxInstance.volume = 0.1f;
 
         Invoke("StartRunningSfx", 3.0f);
 
