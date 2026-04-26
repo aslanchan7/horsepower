@@ -1,34 +1,36 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(CanvasGroup))]
 public class EndScreenUI : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI playerPositionText;
+    [SerializeField] Image background;
     [SerializeField] TransitionUI transitionUI;
+    [SerializeField] Sprite[] endScreenSprites;
     bool isAnimating = true;
 
     public void ShowEndScreen(int playerPosition)
     {
         if (playerPosition == 1)
         {
-            playerPositionText.text = "1st";
+            background.sprite = endScreenSprites[0];
         }
         else if (playerPosition == 2)
         {
-            playerPositionText.text = "2nd";
+            background.sprite = endScreenSprites[1];
         }
         else if (playerPosition == 3)
         {
-            playerPositionText.text = "3rd";
+            background.sprite = endScreenSprites[2];
         }
         else if (playerPosition == 4)
         {
-            playerPositionText.text = "4th";
+            background.sprite = endScreenSprites[3];
         }
         else if (playerPosition == 5)
         {
-            playerPositionText.text = "5th";
+            background.sprite = endScreenSprites[3];
         }
 
         GetComponent<CanvasGroup>().alpha = 0f;
