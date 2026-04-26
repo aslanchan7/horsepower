@@ -1,0 +1,148 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1233149941 &-6493259690526900157
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: babble7_{-6493259690526900157}
+  m_AudioClip: {fileID: 8300000, guid: 4c4617126df108146997566208ed8345, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-4527098147151564001
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: babble6_{-4527098147151564001}
+  m_AudioClip: {fileID: 8300000, guid: b911538e03e433f45ace3c737b1051f7, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &-2324867280495017612
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: babble11_{-2324867280495017612}
+  m_AudioClip: {fileID: 8300000, guid: d745d7c3ff0055f4ebfca4317d554d59, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &2836882508297492040
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: babble2_{2836882508297492040}
+  m_AudioClip: {fileID: 8300000, guid: 0032585737d08a942b7398eb19e10e41, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &2992399471267406890
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: babble10_{2992399471267406890}
+  m_AudioClip: {fileID: 8300000, guid: ca8a310410f42d54a985b7735fc476c3, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &3815578719692063801
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: babble3_{3815578719692063801}
+  m_AudioClip: {fileID: 8300000, guid: 9867a599cfa2974428718b2dd1d85de4, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &4480549823077062271
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: babble1_{4480549823077062271}
+  m_AudioClip: {fileID: 8300000, guid: 29ab55851bd98664883472854621d8c0, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &6285148829715248398
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: babble4_{6285148829715248398}
+  m_AudioClip: {fileID: 8300000, guid: 02efbfd86ea408f45b858e29775d7c2e, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1307931743 &6418180475301049370
+AudioRandomContainer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: babbling
+  m_Volume: 0
+  m_Pitch: 0
+  m_AutomaticTriggerTime: 0
+  m_LoopCount: 1
+  m_VolumeRandomizationRange: {x: 0, y: 0}
+  m_PitchRandomizationRange: {x: 0, y: 0}
+  m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
+  m_LoopCountRandomizationRange: {x: 0, y: 0}
+  m_Elements:
+  - {fileID: 4480549823077062271}
+  - {fileID: 2836882508297492040}
+  - {fileID: 3815578719692063801}
+  - {fileID: 6285148829715248398}
+  - {fileID: -4527098147151564001}
+  - {fileID: -6493259690526900157}
+  - {fileID: 7618916186696485511}
+  - {fileID: 2992399471267406890}
+  - {fileID: -2324867280495017612}
+  - {fileID: 6852555010276222166}
+  - {fileID: 6877727721196603440}
+  m_AvoidRepeatingLast: 0
+  m_PlaybackMode: 0
+  m_TriggerMode: 1
+  m_AutomaticTriggerMode: 1
+  m_LoopMode: 2
+  m_VolumeRandomizationEnabled: 0
+  m_PitchRandomizationEnabled: 0
+  m_AutomaticTriggerTimeRandomizationEnabled: 0
+  m_LoopCountRandomizationEnabled: 0
+--- !u!1233149941 &6852555010276222166
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: babble12_{6852555010276222166}
+  m_AudioClip: {fileID: 8300000, guid: 40794ea2882601b4f9a0cd03108c2c53, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &6877727721196603440
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: babble13_{6877727721196603440}
+  m_AudioClip: {fileID: 8300000, guid: b5d9e67f8fd1256478ef1950505eb028, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &7618916186696485511
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: babble8_{7618916186696485511}
+  m_AudioClip: {fileID: 8300000, guid: 0d39331c245d4114db823260bd6669ed, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
