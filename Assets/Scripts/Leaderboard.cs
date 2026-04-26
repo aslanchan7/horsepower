@@ -11,6 +11,8 @@ public class Leaderboard : MonoBehaviour
     private float fieldLength;
     [SerializeField] Transform finishLine;
     private float maxPosX;
+    [SerializeField] float startX = 350f;
+    [SerializeField] float endX = 880f;
     [SerializeField] GameObject horseIndicatorPrefab;
     [SerializeField] RectTransform fieldUI;
 
@@ -36,9 +38,9 @@ public class Leaderboard : MonoBehaviour
         foreach (var entry in leaderboardEntries)
         {
             GameObject instantiated = Instantiate(horseIndicatorPrefab, fieldUI);
+            instantiated.GetComponent<Image>().sprite = entry.sprite;
             RectTransform rt = instantiated.GetComponent<RectTransform>();
-            rt.localPosition = new(0, 0);
-            instantiated.GetComponent<Image>().color = entry.color;
+            rt.localPosition = new(startX, 0);
         }
     }
 
@@ -48,7 +50,7 @@ public class Leaderboard : MonoBehaviour
         {
             RectTransform rt = fieldUI.GetChild(i).GetComponent<RectTransform>();
             float percentTravelled = Mathf.Clamp01(leaderboardEntries[i].horseTransform.localPosition.x / fieldLength);
-            float x = percentTravelled * maxPosX;
+            float x = percentTravelled * (endX - startX) + startX;
             rt.localPosition = new(x, rt.localPosition.y, rt.localPosition.z);
         }
     }
@@ -60,6 +62,7 @@ public class LeaderboardEntry : IComparer
     public Transform horseTransform;
     public int id;
     public Color color;
+    public Sprite sprite;
 
     public int Compare(object x, object y)
     {
