@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class TransitionUI : MonoBehaviour
 {
     [SerializeField] CanvasGroup transitionOverlay;
-    [SerializeField] float transitionTime = 0.5f;
+    [SerializeField] float transitionTime = 1.0f;
 
     void Start()
     {
