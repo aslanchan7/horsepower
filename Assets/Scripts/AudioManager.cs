@@ -22,13 +22,13 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance ==null)
+        if (instance == null)
         {
             AudioSource musicInstance = Instantiate(RacingMusicSource, transform.position, Quaternion.identity);
             racingMusicInstance = musicInstance;
             racingMusicInstance.volume = gbmVolume;
 
-            
+
             instance = this;
         }
     }
@@ -48,15 +48,15 @@ public class AudioManager : MonoBehaviour
 
         Invoke("StartRunningSfx", 3.0f);
 
-        Destroy(IntroSfx.gameObject,IntroSfx.clip.length);
+        Destroy(IntroSfx.gameObject, IntroSfx.clip.length);
     }
     public void HorseFall()
     {
-        PlaySFX(HorseFallClip,transform,1.0f);
-        PlaySFX(BooClip,transform,1.0f);
+        PlaySFX(HorseFallClip, transform, 1.0f);
+        PlaySFX(BooClip, transform, 1.0f);
         StartCoroutine(FadeOutAndStop(racingMusicInstance, 0.1f)); // short fade
         StartCoroutine(FadeOutAndStop(runningSfxInstance, 0.1f)); // short fade
-        
+
 
     }
     public void HorseGetUp()
@@ -70,7 +70,7 @@ public class AudioManager : MonoBehaviour
         audioSource.clip = audioClip;
         audioSource.Play();
 
-        Destroy(audioSource.gameObject,audioSource.clip.length);
+        Destroy(audioSource.gameObject, 5.0f);
 
     }
     private void StartRunningSfx()
