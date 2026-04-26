@@ -44,7 +44,7 @@ public class AudioManager : MonoBehaviour
         AudioSource runningInstance = Instantiate(LoopObject, transform.position, Quaternion.identity);
         runningSfxInstance = runningInstance;
         runningSfxInstance.clip = RunningClip;
-        runningSfxInstance.volume = 0.8f;
+        runningSfxInstance.volume = 0.3f;
 
         Invoke("StartRunningSfx", 3.0f);
 
