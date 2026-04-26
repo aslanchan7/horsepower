@@ -19,9 +19,8 @@ public class PlayerControls : MonoBehaviour
     private float lastSuccessfulInputTime;
     [SerializeField] float coyoteTime = 0.2f;
     [SerializeField] float timeBeforeStanding = 1.5f;
-    [SerializeField] TextMeshProUGUI text1;
-    [SerializeField] TextMeshProUGUI text2;
     public int consecutiveSuccessfulInput = 0;
+    [SerializeField] KeySequenceUI keySequenceUI;
 
     void Awake()
     {
@@ -54,7 +53,8 @@ public class PlayerControls : MonoBehaviour
 
         // TODO: Move this into a different script
         // Right now, this prints the queue onto the UI
-        PrintArray();
+        // PrintArray();
+        keySequenceUI.UpdateSequence(player1KeySequence.ToArray(), player2KeySequence.ToArray());
 
         // Disable inputs if horse is fallen
         if (HorseController.Instance.HorseState == HorseState.Fallen)
@@ -69,14 +69,6 @@ public class PlayerControls : MonoBehaviour
         CheckPlayer2Input();
 
         ManageInput();
-    }
-
-    void PrintArray()
-    {
-        KeyCode[] arr1 = player1KeySequence.ToArray();
-        KeyCode[] arr2 = player2KeySequence.ToArray();
-        text1.text = $"Player 1: {arr1[0]}, {arr1[1]}, {arr1[2]}, {arr1[3]}";
-        text2.text = $"Player 2: {arr2[0]}, {arr2[1]}, {arr2[2]}, {arr2[3]}";
     }
 
     void GenerateKeySeqQueue()
