@@ -844,6 +844,7 @@ MonoBehaviour:
   HorseState: 2
   sprite: {fileID: 493441213}
   fallenHorseCountdown: 2
+  horseFallClip: {fileID: 8300000, guid: fd44365c21ec9504f90716413f6582d2, type: 3}
   InitialVelocity: 0.07
   CurrentVelocity: 0
   animator: {fileID: 493441216}
@@ -1001,7 +1002,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.157135, y: 0.056858063, z: -10}
+  m_LocalPosition: {x: 21.139359, y: 0.056858063, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1115,6 +1116,56 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619394800}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &636975288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 636975290}
+  - component: {fileID: 636975289}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &636975289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636975288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb3757740b3119e4ead27431059c50bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  SFXObject: {fileID: 7618398895417836001, guid: 2824e4b0add4bb84d96954e72820441e, type: 3}
+  RacingMusicSource: {fileID: 125982756812383634, guid: a5bf3e967e0bc374b9c0a131eb3c2795, type: 3}
+  CountdownClip: {fileID: 8300000, guid: 2530ebe1ca73dd94f82ba76b4cdea989, type: 3}
+  HorseFallClip: {fileID: 8300000, guid: fd44365c21ec9504f90716413f6582d2, type: 3}
+  gbmVolume: 0
+  raceStarted: 0
+--- !u!4 &636975290
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636975288}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -3347,3 +3398,4 @@ SceneRoots:
   - {fileID: 3262959218163798462}
   - {fileID: 1860048049}
   - {fileID: 817186554}
+  - {fileID: 636975290}

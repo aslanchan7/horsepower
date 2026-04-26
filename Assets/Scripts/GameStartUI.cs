@@ -27,6 +27,10 @@ public class GameStartUI : MonoBehaviour
         {
             countdownText.text = "2";
         }
+        else if (GameManager.Instance.startGameCooldown <= 3.0f)
+        {
+            countdownText.text = "3";
+        }
     }
 
     void FadeOut()
